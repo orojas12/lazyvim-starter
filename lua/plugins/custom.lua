@@ -6,6 +6,8 @@
 -- * override the configuration of LazyVim plugins
 return {
 
+  { "akinsho/bufferline.nvim", enabled = false },
+
   {
     "LazyVim/LazyVim",
     opts = {
@@ -17,6 +19,10 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+    init = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      keys[#keys + 1] = { "<a-n>", false }
+    end,
     opts = {
       vtsls = {
         settings = {
@@ -39,5 +45,43 @@ return {
       },
       { "\\", "<leader>fe", remap = true },
     },
+  },
+
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    keys = function()
+      local harpoonKeyList = { "h", "j", "k", "l", "n", "m", ",", "." }
+      local keys = {
+        {
+          "<leader>H",
+          function()
+            local harpoon = require("harpoon")
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+          end,
+          desc = "Harpoon Quick Menu",
+        },
+      }
+
+      for i = 1, 8 do
+        table.insert(keys, {
+          "<leader>h" .. harpoonKeyList[i],
+          function()
+            require("harpoon"):list():replace_at(i)
+          end,
+          desc = "Harpoon File to " .. harpoonKeyList[i],
+        })
+
+        table.insert(keys, {
+          "<A-" .. harpoonKeyList[i] .. ">",
+          function()
+            require("harpoon"):list():select(i)
+          end,
+          desc = "Harpoon to File " .. harpoonKeyList[i],
+        })
+      end
+
+      return keys
+    end,
   },
 }
