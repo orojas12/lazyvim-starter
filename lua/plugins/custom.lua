@@ -6,8 +6,10 @@
 -- * override the configuration of LazyVim plugins
 return {
 
+  -- disable bufferline plugin
   { "akinsho/bufferline.nvim", enabled = false },
 
+  -- set colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
@@ -15,8 +17,7 @@ return {
     },
   },
 
-  { import = "lazyvim.plugins.extras.lang.json" },
-
+  -- disable inlay hints
   {
     "neovim/nvim-lspconfig",
     init = function()
@@ -24,16 +25,11 @@ return {
       keys[#keys + 1] = { "<a-n>", false }
     end,
     opts = {
-      vtsls = {
-        settings = {
-          typescript = {
-            inlayHints = {},
-          },
-        },
-      },
+      inlay_hints = { enabled = false },
     },
   },
 
+  -- neotree keymaps
   {
     "nvim-neo-tree/neo-tree.nvim",
     keys = {
@@ -47,6 +43,7 @@ return {
     },
   },
 
+  -- harpoon keymaps
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
