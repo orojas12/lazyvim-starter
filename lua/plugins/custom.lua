@@ -23,8 +23,6 @@ return {
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       keys[#keys + 1] = { "<a-n>", false }
-      keys[#keys + 1] = { "K", false }
-      keys[#keys + 1] = { "<M-k>", vim.lsp.buf.hover }
     end,
     opts = {
       inlay_hints = { enabled = false },
@@ -72,7 +70,7 @@ return {
           end,
         })
         table.insert(keys, {
-          "<S-" .. keyList[i] .. ">",
+          "<M-" .. keyList[i] .. ">",
           function()
             require("grapple").select({ index = i })
           end,
