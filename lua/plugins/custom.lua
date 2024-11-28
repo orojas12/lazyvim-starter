@@ -23,6 +23,8 @@ return {
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       keys[#keys + 1] = { "<a-n>", false }
+      keys[#keys + 1] = { "K", false }
+      keys[#keys + 1] = { "<M-k>", vim.lsp.buf.hover }
     end,
     opts = {
       inlay_hints = { enabled = false },
@@ -43,38 +45,38 @@ return {
     },
   },
 
-  -- harpoon keymaps
   {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
+    "folke/snacks.nvim",
+    keys = {
+      { "<leader>n", ":lua Snacks.notifier.show_history()<cr>" },
+    },
+  },
+
+  {
+    "cbochs/grapple.nvim",
+    dependencies = {
+      {
+        "nvim-tree/nvim-web-devicons",
+        lazy = true,
+      },
+    },
     keys = function()
-      local harpoonKeyList = { "h", "j", "k", "l", "n", "m", ",", "." }
-      local keys = {
-        {
-          "<leader>H",
-          function()
-            local harpoon = require("harpoon")
-            harpoon.ui:toggle_quick_menu(harpoon:list())
-          end,
-          desc = "Harpoon Quick Menu",
-        },
-      }
+      local keyList = { "h", "j", "k", "l", "n", "m", ",", "." }
+      local keys = {}
 
       for i = 1, 8 do
         table.insert(keys, {
-          "<leader>h" .. harpoonKeyList[i],
+          "<leader>t" .. keyList[i],
           function()
-            require("harpoon"):list():replace_at(i)
+            require("grapple").tag({ index = i })
           end,
-          desc = "Harpoon File to " .. harpoonKeyList[i],
         })
-
         table.insert(keys, {
-          "<A-" .. harpoonKeyList[i] .. ">",
+          "<S-" .. keyList[i] .. ">",
           function()
-            require("harpoon"):list():select(i)
+            require("grapple").select({ index = i })
           end,
-          desc = "Harpoon to File " .. harpoonKeyList[i],
+          desc = "Select buffer " .. keyList[i],
         })
       end
 
