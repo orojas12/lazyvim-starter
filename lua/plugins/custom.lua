@@ -81,4 +81,9 @@ return {
       return keys
     end,
   },
+
+  {
+    "sphamba/smear-cursor.nvim",
+    opts = {},
+  },
 }
