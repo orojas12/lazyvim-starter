@@ -66,7 +66,7 @@ return {
         table.insert(keys, {
           "<leader>t" .. keyList[i],
           function()
-            require("grapple").toggle({ name = keyList[i] })
+            require("grapple").tag({ name = keyList[i] })
           end,
         })
         table.insert(keys, {
