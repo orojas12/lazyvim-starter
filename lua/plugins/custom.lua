@@ -46,7 +46,7 @@ return {
   {
     "folke/snacks.nvim",
     keys = {
-      { "<leader>n", ":lua Snacks.notifier.show_history()<cr>" },
+      { "<leader>snn", ":lua Snacks.notifier.show_history()<cr>", { desc = "Show notifier history" } },
     },
   },
 
@@ -66,13 +66,13 @@ return {
         table.insert(keys, {
           "<leader>t" .. keyList[i],
           function()
-            require("grapple").tag({ index = i })
+            require("grapple").toggle({ name = keyList[i] })
           end,
         })
         table.insert(keys, {
-          "<M-" .. keyList[i] .. ">",
+          "<C-" .. keyList[i] .. ">",
           function()
-            require("grapple").select({ index = i })
+            require("grapple").select({ name = keyList[i] })
           end,
           desc = "Select buffer " .. keyList[i],
         })
