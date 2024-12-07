@@ -6,6 +6,8 @@
 -- * override the configuration of LazyVim plugins
 return {
 
+  -- { import = "lazyvim.plugins.extras.editor.mini-files" },
+
   -- disable bufferline plugin
   { "akinsho/bufferline.nvim", enabled = false },
 
@@ -26,20 +28,6 @@ return {
     end,
     opts = {
       inlay_hints = { enabled = false },
-    },
-  },
-
-  -- neotree keymaps
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    keys = {
-      {
-        "<leader>fe",
-        function()
-          require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root(), position = "float" })
-        end,
-      },
-      { "\\", "<leader>fe", remap = true },
     },
   },
 
@@ -85,5 +73,22 @@ return {
   {
     "sphamba/smear-cursor.nvim",
     opts = {},
+  },
+
+  {
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    keys = {
+      { "<leader>o", "<CMD>Oil --float<CR>", { desc = "Open parent directory in Oil" } },
+    },
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
+
+  {
+    "tpope/vim-fugitive",
   },
 }

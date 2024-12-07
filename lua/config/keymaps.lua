@@ -4,3 +4,4 @@
 
 vim.keymap.set("i", "jh", "<esc>")
 vim.keymap.set("n", ";w", "<cmd>:w<cr>")
+vim.keymap.set("n", ";q", "<cmd>:q<cr>")
