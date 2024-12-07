@@ -19,6 +19,14 @@ return {
     },
   },
 
+  {
+    "nvim-telescope/telescope.nvim",
+    keys = {
+      { "<leader>fF", false },
+      { "<leader><leader>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+    },
+  },
+
   -- disable inlay hints
   {
     "neovim/nvim-lspconfig",
