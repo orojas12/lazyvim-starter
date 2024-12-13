@@ -41,6 +41,11 @@ return {
 
   {
     "folke/snacks.nvim",
+    opts = {
+      lazygit = {
+        enabled = true,
+      },
+    },
     keys = {
       { "<leader>snn", ":lua Snacks.notifier.show_history()<cr>", { desc = "Show notifier history" } },
     },
