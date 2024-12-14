@@ -6,8 +6,6 @@
 -- * override the configuration of LazyVim plugins
 return {
 
-  -- { import = "lazyvim.plugins.extras.editor.mini-files" },
-
   -- disable bufferline plugin
   { "akinsho/bufferline.nvim", enabled = false },
 
@@ -16,14 +14,6 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "catppuccin",
-    },
-  },
-
-  {
-    "nvim-telescope/telescope.nvim",
-    keys = {
-      { "<leader>fF", false },
-      { "<leader><leader>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
     },
   },
 
@@ -40,11 +30,16 @@ return {
   },
 
   {
+    "ibhagwan/fzf-lua",
+    keys = {
+      { "<leader><leader>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+    },
+  },
+
+  {
     "folke/snacks.nvim",
     opts = {
-      lazygit = {
-        enabled = true,
-      },
+      lazygit = { enabled = true },
     },
     keys = {
       { "<leader>snn", ":lua Snacks.notifier.show_history()<cr>", { desc = "Show notifier history" } },
