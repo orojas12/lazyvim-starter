@@ -6,6 +6,10 @@
 -- * override the configuration of LazyVim plugins
 return {
 
+  { import = "lazyvim.plugins.extras.lang.tex" },
+
+  { import = "lazyvim.plugins.extras.lang.java" },
+
   -- disable bufferline plugin
   { "akinsho/bufferline.nvim", enabled = false },
 
@@ -33,6 +37,8 @@ return {
     "ibhagwan/fzf-lua",
     keys = {
       { "<leader><leader>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+      { "<leader>sg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
+      { "<leader>sG", false },
     },
   },
 
