@@ -6,18 +6,20 @@
 -- * override the configuration of LazyVim plugins
 return {
 
-  { import = "lazyvim.plugins.extras.lang.tex" },
-
-  { import = "lazyvim.plugins.extras.lang.java" },
-
   -- disable bufferline plugin
   { "akinsho/bufferline.nvim", enabled = false },
 
   -- set colorscheme
   {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    opts = { style = "night" },
+  },
+
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "tokyonight",
     },
   },
 
@@ -46,6 +48,9 @@ return {
     "folke/snacks.nvim",
     opts = {
       lazygit = { enabled = true },
+      notifier = {
+        timeout = 10000,
+      },
     },
     keys = {
       { "<leader>snn", ":lua Snacks.notifier.show_history()<cr>", { desc = "Show notifier history" } },
