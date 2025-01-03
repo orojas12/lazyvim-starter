@@ -9,20 +9,6 @@ return {
   -- disable bufferline plugin
   { "akinsho/bufferline.nvim", enabled = false },
 
-  -- set colorscheme
-  {
-    "folke/tokyonight.nvim",
-    lazy = true,
-    opts = { style = "night" },
-  },
-
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "tokyonight",
-    },
-  },
-
   -- disable inlay hints
   {
     "neovim/nvim-lspconfig",
