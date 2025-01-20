@@ -63,7 +63,7 @@ return {
           end,
         })
         table.insert(keys, {
-          "<C-" .. keyList[i] .. ">",
+          "<M-" .. keyList[i] .. ">",
           function()
             require("grapple").select({ name = keyList[i] })
           end,
@@ -83,12 +83,12 @@ return {
   {
     "stevearc/oil.nvim",
     ---@module 'oil'
-    ---@type oil.SetupOpts
     opts = {},
+    ---@type oil.SetupOpts
     -- Optional dependencies
     -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
     keys = {
-      { "<leader>o", "<CMD>Oil --float<CR>", { desc = "Open parent directory in Oil" } },
+      { "<leader>o", "<CMD>Oil<CR>", { desc = "Open parent directory in Oil" } },
     },
     dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
   },
