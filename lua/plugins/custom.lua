@@ -81,19 +81,6 @@ return {
   },
 
   {
-    "stevearc/oil.nvim",
-    ---@module 'oil'
-    opts = {},
-    ---@type oil.SetupOpts
-    -- Optional dependencies
-    -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    keys = {
-      { "<leader>o", "<CMD>Oil<CR>", { desc = "Open parent directory in Oil" } },
-    },
-    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-  },
-
-  {
     "tpope/vim-fugitive",
   },
 }
