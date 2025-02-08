@@ -9,6 +9,9 @@ return {
   -- disable bufferline plugin
   { "akinsho/bufferline.nvim", enabled = false },
 
+  -- disable neotree
+  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+
   -- disable inlay hints
   {
     "neovim/nvim-lspconfig",
@@ -82,5 +85,13 @@ return {
 
   {
     "tpope/vim-fugitive",
+  },
+
+  {
+    "stevearc/oil.nvim",
+    config = function(_, opts)
+      require("oil").setup(opts)
+      vim.keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Open parent directory " })
+    end,
   },
 }
